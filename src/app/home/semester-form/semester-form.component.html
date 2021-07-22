@@ -1,0 +1,37 @@
+<form novalidate autocomplete="off" #form="ngForm"(submit)="onSubmit(form)">
+    <input type="hidden" name="SemesterId"
+    [value]="service.formData.SemesterId"/>
+    <div class="form-group">
+        <label>SEMESTER ID</label>
+        <input class="form-control form-control-lg" placeholder="ID" name="SemesterId"
+        #SemesterId="ngModel" [(ngModel)]="service.formData.SemesterId" 
+        required [class.invalid]="SemesterId.invalid && SemesterName.touched">
+    </div>
+    <div class="form-group">
+        <label>SEMESTER NAME</label>
+        <input class="form-control form-control-lg" placeholder="Full Name" name="SemesterName"
+        #SemesterName="ngModel" [(ngModel)]="service.formData.SemesterName" 
+        required [class.invalid]="SemesterName.invalid && StartDate.touched">
+    </div>
+    <div class="form-group">
+        <label>START DATE</label>
+        <input class="form-control form-control-lg" placeholder="YYYY-MM-DD" name="StartDate"
+        #StartDate="ngModel" [(ngModel)]="service.formData.StartDate" 
+        required maxlength="16" minlength="6" [class.invalid]="StartDate.invalid && EndDate.touched">
+    </div>
+        <div class="form-group">
+        <label>END DATE</label>
+        <input class="form-control form-control-lg" placeholder="YYYY-MM-DD" name="EndDate"
+        #EndDate="ngModel" [(ngModel)]="service.formData.EndDate" 
+        required maxlength="16" minlength="6" [class.invalid]="EndDate.invalid && EndDate.touched">
+    </div>
+    <!-- <div class="form-group">
+        <label>IS COMPLETE</label>
+        <input class="form-control form-control-lg" placeholder="FALSE" name="IsComplete"
+        #IsComplete="ngModel" [(ngModel)]="service.formData.IsComplete" 
+        required [class.invalid]="IsComplete.invalid && IsComplete.touched">
+    </div> -->
+    <div class="form-group">
+        <button class="btn btn-info btn-lg btn-block" type="submit"[disabled]="form.invalid">SUBMIT</button>
+    </div>
+</form>

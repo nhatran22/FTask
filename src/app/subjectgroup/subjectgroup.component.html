@@ -1,0 +1,51 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-3">SUBJECT GROUP</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="jumbotron">
+          <h1 class="display-6 text-center">SUBJECT GROUP INFORMATION</h1>
+        </div>
+        <form novalidate autocomplete="off" #form="ngForm"(submit)="onSubmit(form)">
+          <input type="hidden" name="SubjectGroupId"
+          [value]="service.formData.SubjectGroupId"/>
+          <div class="form-group">
+              <label>SUBJECT GROUP ID</label>
+              <input class="form-control form-control-lg" placeholder="ID" name="SubjectGroupId"
+              #SubjectGroupId="ngModel" [(ngModel)]="service.formData.SubjectGroupId" >
+          </div>
+          <div class="form-group">
+              <label>SUBJECT GROUP NAME</label>
+              <input class="form-control form-control-lg" placeholder="Full Name" name="SubjectGroupName"
+              #ubjectGroupName="ngModel" [(ngModel)]="service.formData.SubjectGroupName" >
+          </div>
+          <div class="form-group">
+              <button class="btn btn-info btn-lg btn-block" type="submit"[disabled]="form.invalid">SUBMIT</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-7">
+        <span>LIST OF SUBJECT GROUP</span>
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th>ID</th>
+              <th>Subject Group Name</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let sgd of service.list">
+              <td (click)="populateForm(sgd)">{{sgd.subjectGroupId}}</td>
+              <td (click)="populateForm(sgd)">{{sgd.subjectGroupName}}</td>
+              <td>
+                <i class="far fa-trash-alt fa-lg text-danger"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

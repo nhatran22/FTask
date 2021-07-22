@@ -1,0 +1,61 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-3">TOPIC</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="jumbotron">
+          <h1 class="display-6 text-center">TOPIC INFORMATION</h1>
+        </div>
+        <!-- <app-major-form></app-major-form> -->
+        <form novalidate autocomplete="off" #form="ngForm"(submit)="onSubmit(form)">
+          <input type="hidden" name="TopicName"
+          [value]="service.formData.TopicName"/>
+          <div class="form-group">
+              <label>TOPIC NAME</label>
+              <input class="form-control form-control-lg" placeholder="Full Name" name="TopicName"
+              #TopicId="ngModel" [(ngModel)]="service.formData.TopicName" >
+          </div>
+          <div class="form-group">
+              <label>DESCRIPTION</label>
+              <input class="form-control form-control-lg" placeholder="Full Name" name="TopicDescription"
+              #TopicName="ngModel" [(ngModel)]="service.formData.TopicDescription" >
+          </div>
+          <div class="form-group">
+            <label>SUBJECT ID</label>
+            <input class="form-control form-control-lg" placeholder="Subject ID" name="SubjectId"
+            #SubjectId="ngModel" [(ngModel)]="service.formData.SubjectId" >
+          </div>
+          <div class="form-group">
+              <button class="btn btn-info btn-lg btn-block" type="submit"[disabled]="form.invalid">SUBMIT</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-7">
+        <span>LIST OF TOPIC</span>
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th>ID</th>
+              <th>Topic Name</th>
+              <th>Description</th>
+              <th>Subject ID</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let td of service.list">
+              <td (click)="populateForm(td)">{{td.topicId}}</td>
+              <td (click)="populateForm(td)">{{td.topicName}}</td>
+              <td (click)="populateForm(td)">{{td.topicDescription}}</td>
+              <td (click)="populateForm(td)">{{td.subjectId}}</td>
+              <td>
+                <i class="far fa-trash-alt fa-lg text-danger"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
+      </div>
+    </div>
+  </div>
+</div>

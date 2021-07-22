@@ -1,0 +1,61 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-3">SUBJECT</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="jumbotron">
+          <h1 class="display-6 text-center">SUBJECT INFORMATION</h1>
+        </div>
+        <!-- <app-major-form></app-major-form> -->
+        <form novalidate autocomplete="off" #form="ngForm"(submit)="onSubmit(form)">
+          <input type="hidden" name="SubjectId"
+          [value]="service.formData.SubjectId"/>
+          <div class="form-group">
+              <label>SUBJECT ID</label>
+              <input class="form-control form-control-lg" placeholder="ID" name="SubjectId"
+              #SubjectId="ngModel" [(ngModel)]="service.formData.SubjectId" >
+          </div>
+          <div class="form-group">
+              <label>SUBJECT NAME</label>
+              <input class="form-control form-control-lg" placeholder="Full Name" name="SubjectName"
+              #SubjectName="ngModel" [(ngModel)]="service.formData.SubjectName" >
+          </div>
+          <div class="form-group">
+            <label>SUBJECT SOURCE</label>
+            <input class="form-control form-control-lg" placeholder="Full Name" name="Source"
+            #SubjectSource="ngModel" [(ngModel)]="service.formData.Source" >
+        </div>
+          <div class="form-group">
+              <button class="btn btn-info btn-lg btn-block" type="submit"[disabled]="form.invalid">SUBMIT</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-7">
+        <span>LIST OF MAJOR</span>
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th>Subject ID</th>
+              <th>Subject Name</th>
+              <th>Source</th>
+              <th>Subject Group ID</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let sjd of service.list">
+              <td (click)="populateForm(sjd)">{{sjd.subjectId}}</td>
+              <td (click)="populateForm(sjd)">{{sjd.subjectName}}</td>
+              <td (click)="populateForm(sjd)">{{sjd.source}}</td>
+              <td (click)="populateForm(sjd)">{{sjd.subjectGroupId}}</td>
+              <td>
+                <i class="far fa-trash-alt fa-lg text-danger"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

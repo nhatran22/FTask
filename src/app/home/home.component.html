@@ -1,0 +1,41 @@
+<div class="container-fluid page">
+  <div class="d-flex page__box p-3 mt-3">SEMESTER</div>
+  <div class="page__content shadow p-3 position-relative">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="jumbotron">
+          <h1 class="display-6 text-center">SEMESTER INFORMATION</h1>
+        </div>
+        <app-semester-form></app-semester-form>
+      </div>
+      <div class="col-md-8">
+        <span>LIST OF SEMESTER</span>
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th>Semester ID</th>
+              <th>Semester Name</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Is Complete</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let sd of service.list">
+              <td (click)="populateForm(sd)">{{sd.semesterId}}</td>
+              <td (click)="populateForm(sd)">{{sd.semesterName}}</td>
+              <td (click)="populateForm(sd)">{{sd.startDate}}</td>
+              <td (click)="populateForm(sd)">{{sd.endDate}}</td>
+              <td (click)="populateForm(sd)">{{sd.isComplete}}</td>
+              <td>
+                <i class="far fa-trash-alt fa-lg text-danger"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
